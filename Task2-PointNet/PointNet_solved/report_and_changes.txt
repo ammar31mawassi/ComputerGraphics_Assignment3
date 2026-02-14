@@ -1,0 +1,92 @@
+Assignment 3 – Task 2: PointNet + ShapeNet
+=========================================
+
+Environment
+-----------
+The PointNet experiments were executed using Google Colab with GPU support.
+All required Python libraries (PyTorch, NumPy, matplotlib, etc.) were available in the Colab environment.
+
+
+Dataset Preparation
+-------------------
+We used the ShapeNetCore dataset and selected the following six categories:
+
+- Airplane
+- Car
+- Chair
+- Lamp
+- Table
+- Pistol
+
+From each category, 120 samples were selected for the training set, resulting in a balanced training dataset of 720 shapes.
+Validation and test sets were created with smaller balanced subsets.
+
+To reduce computational cost and enable training on limited hardware, voxel downsampling was applied to each point cloud.
+Voxel downsampling reduces the number of points while preserving the overall geometric structure of the object.
+
+Example downsampling result:
+- Original number of points: 2769
+- After voxel downsampling: 1932
+- Reduction ratio: ~0.70
+
+Each downsampled point cloud was then uniformly sampled to 2048 points before being fed to the network.
+
+
+Baseline Model
+--------------
+The baseline model is the standard PointNet classification architecture using:
+- Input features: (x, y, z)
+- Global max pooling
+- Fully connected classifier layers
+
+Training was performed for 20 epochs.
+
+Baseline performance:
+- Validation accuracy: 0.9943
+- Test accuracy: 0.9889
+
+
+Task 3.1 – Feature Importance Analysis
+-------------------------------------
+To analyze feature importance, we trained PointNet while removing one coordinate dimension at a time.
+The input dimension was kept at size 3 by setting the removed coordinate to zero.
+
+Results:
+
+1. xy input (z = 0):
+   - Validation accuracy: 0.8914
+   - Test accuracy: 0.9111
+
+2. yz input (x = 0):
+   - Validation accuracy: 0.9943
+   - Test accuracy: 0.9722
+
+Interpretation:
+Removing the z-coordinate caused a significant drop in performance, indicating that depth information is crucial for object classification.
+Removing the x-coordinate had a much smaller effect, suggesting that for the selected object categories, variation along the x-axis is less informative.
+
+
+Task 3.2 – Architecture Modification
+------------------------------------
+To study the effect of PointNet’s global pooling operation, the max pooling layer was replaced with average pooling.
+All other components of the architecture remained unchanged.
+
+The modified model was trained for 20 epochs using the same dataset.
+
+Results:
+- Validation accuracy: 0.9886
+- Test accuracy: 0.9778
+
+Interpretation:
+Average pooling slightly reduced performance compared to max pooling.
+This supports the idea that PointNet benefits from max pooling, which captures the most informative local features across the point cloud, while average pooling smooths feature responses and may dilute discriminative signals.
+
+
+Conclusion
+----------
+The experiments demonstrate that:
+1. Depth (z-coordinate) is a critical feature for 3D shape classification.
+2. PointNet’s use of global max pooling is effective for capturing discriminative geometric features.
+3. Reducing dataset size using voxel downsampling enables efficient training while preserving model performance.
+
+All tasks were implemented and evaluated according to the assignment requirements.
