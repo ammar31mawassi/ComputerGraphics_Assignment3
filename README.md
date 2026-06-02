@@ -1,3 +1,77 @@
+<!-- bettergithub:generated-readme -->
+# Computer Graphics Assignment 3
+
+Computer Graphics Assignment 3 demonstrates interactive graphics work in C++ through an OpenGL Rubik's Cube task and a PointNet-related exploration. The repo helps reviewers see how rendering, transformations, input handling, and graphics-course experimentation were organized into a reproducible assignment submission with clear build notes and inspection guidance.
+
+## Tech Stack
+
+- C++
+- OpenGL
+- GLFW
+- GLM
+- PointNet notes
+- GitHub Actions
+
+## Quick Start
+
+```bash
+Review the assignment folders and source files.
+Install the course graphics dependencies listed in the assignment handout.
+Build the relevant C++ target from the assignment folder.
+```
+
+## Usage
+
+- Run the OpenGL task locally from the assignment folder.
+- Use the README and docs as a map for the two assignment tasks.
+- Capture screenshots of the cube or PointNet output when rerunning the project.
+
+## Environment Variables
+
+No .env file or API key is required. A local C++ compiler and the course graphics libraries are the only expected configuration.
+
+## Demo and Screenshots
+
+![Computer Graphics Assignment 3 repo walkthrough](docs/repo-health-overview.svg)
+
+The diagram above is a lightweight walkthrough image for GitHub reviewers. It shows the reviewer path, the implementation areas to inspect, and the evidence this repository provides. For non-web course projects, this replaces a live demo with reproducible local setup and manual verification notes.
+
+## Testing and Quality
+
+Testing is documented even when the original assignment uses manual verification instead of a full automated suite.
+
+```bash
+Manual test: build the assignment target, run the executable, and verify the documented controls and rendered output.
+```
+
+See [docs/test-plan.md](docs/test-plan.md) for the manual or automated checks that should be used before presenting this repository.
+
+## Repository Structure
+
+- `Task folders in the repo`
+- `C++ source files`
+- `docs`
+
+## Architecture Notes
+
+This is a course graphics repo. The implementation is kept in its original assignment layout, while the added docs describe the rendering responsibilities, setup assumptions, manual tests, and expected reviewer path.
+
+See [docs/architecture.md](docs/architecture.md) for a more detailed reviewer map.
+
+## Recruiter Notes
+
+- The README opens with the project purpose, audience, and result so the repository is scannable.
+- Setup, environment, usage, testing, and architecture notes are collected in predictable sections.
+- Existing source code was not changed by the documentation polish pass.
+
+## Roadmap
+
+- Add a short result screenshot or terminal capture after the project is rerun locally.
+- Add one small automated smoke test if the course/tooling environment makes it practical.
+- Keep the README aligned with the latest verified run command.
+
+## Existing Project Notes
+
 # Computer Graphics – Assignment 3
 
 **Rubik's Cube (OpenGL/C++) + PointNet (Python/ShapeNet)**
@@ -63,3 +137,4 @@ For each chosen task, show: one sample visualization, NLL loss, and **accuracy**
 ---
 
 ---
+
